@@ -1,3 +1,6 @@
+$maxwidth: 1000px;
+$tint: 320; // purple!
+
 .main {
     display: flex;
     flex-direction: column;
@@ -6,7 +9,7 @@
     align-content: center;
     min-height: 100vh;
     max-width: 800px;
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
 
     & h1 {
@@ -20,16 +23,19 @@
         gap: 10px;
         & a {
             transition: 150ms ease;
-            color: hsl(150, 30%, 80%);
-            background-color: hsl(150, 20%, 15%);
+            color: hsl($tint, 30%, 80%);
+            background-color: hsl($tint, 20%, 10%);
             border: 0;
-            padding: 5px 20px;
+            padding: 5px 13px;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 5px;
             width: fit-content;
             &:hover {
-                background-color: hsl(150, 20%, 20%);
+                background-color: hsl($tint, 20%, 20%);
             }
+        }
+        @media screen and (max-width: 500px) {
+            flex-direction: column;
         }
     }
 }
