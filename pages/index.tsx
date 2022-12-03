@@ -4,12 +4,60 @@ import styles from "../styles/Home.module.scss"
 import { motion, MotionConfig } from "framer"
 import { loadScrobble, Scrobble } from "../lib/lastfm-scrobble"
 import Image from "next/image"
-import { MouseEventHandler, useEffect, useMemo, useRef, useState } from "react"
-import { CaretDownFill } from "react-bootstrap-icons"
+import { ReactElement, useMemo, useRef, useState } from "react"
+import {
+    ArrowRight,
+    ArrowRightCircle,
+    ArrowRightShort,
+    CaretDownFill,
+    Github,
+    Icon,
+} from "react-bootstrap-icons"
 
 export async function getStaticProps() {
     return { props: { lastScrobble: await loadScrobble() } }
 }
+
+interface LatestPosts {
+    title?: string
+    shortDescription?: string
+    links?: {
+        text: string
+        link: string
+        icon?: ReactElement
+    }[]
+}
+
+const latestBlogPosts: LatestPosts[] = [
+    {
+        title: "Usva is now in production!",
+        shortDescription:
+            "I'm glad to announce that my most recent project Usva was released to production last week.",
+        links: [
+            {
+                text: "Website",
+                link: "https://usva.cc",
+            },
+            {
+                text: "Backend-repository",
+                link: "https://github.com/romeq/usva",
+            },
+            {
+                text: "Frontend-repository",
+                link: "https://github.com/romeq/usva-ui",
+            },
+        ],
+    },
+    //{
+    //    links: [
+    //        {
+    //            text: "Read more from my blog",
+    //            link: "/blog",
+    //            icon: <ArrowRight />,
+    //        },
+    //    ],
+    //},
+]
 
 export default function Home(props: { lastScrobble: Scrobble }) {
     const [imageLoaded, setImageLoaded] = useState(false)
@@ -66,11 +114,11 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                                     clearTimeout(timeout)
                                 }}
                             >
-                                This data was requested from my{" "}
+                                For more information check my{" "}
                                 <Link target="_blank" href="https://last.fm/user/tokeeee">
                                     last.fm profile
                                 </Link>
-                                .
+                                !
                                 <ul>
                                     <li>Date: {props.lastScrobble.date}</li>
                                     <li>Album: {props.lastScrobble.album}</li>
@@ -97,9 +145,9 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                         }}
                         className={styles.links}
                     >
-                        <Link href="/blog">My blog</Link>
-                        <Link href="/about">About</Link>
-                        <Link href="/projects">My projects</Link>
+                        <Link href="https://github.com/romeq" target="_blank">
+                            GitHub-profile
+                        </Link>
                     </motion.div>
                 </div>
                 <motion.div
@@ -113,17 +161,37 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                     }}
                     className={styles.center}
                 >
-                    <h1>Hi, I&apos;m Touko. </h1>
-                    <div className={styles.classes}>
-                        <div className={styles.class}>
+                    <div className={styles.maincontainer}>
+                        <div className={styles.maincontainerbox}>
+                            <h1>Hi, I&apos;m Touko. </h1>
                             <h4>A brief overview about me</h4>
                             <p>
-                                I&apos;m Touko, also widely known with the nickname toke. My biggest interests
-                                are often the most technical or theorethical things- therefore, I mostly like
-                                maths, programming, chemistry and psychology. If you think we share certain
-                                interests or want to talk regardless, feel free to contact me!{" "}
-                                <Link href="/about">You can read more about me here.</Link>
+                                I&apos;m Touko, also widely known by the nickname toke. My interests vary, but
+                                it&apos;s common for most of them to be related to technical or theorethical
+                                things. I mostly like maths, programming, chemistry and psychology. If you
+                                think we share certain interests or want to talk regardless, feel free to
+                                contact me! <Link href="/about">You can read more about me here.</Link>
                             </p>
+                        </div>
+                        <div className={styles.news}>
+                            {latestBlogPosts.map((post, key) => (
+                                <>
+                                    <div key={key} className={styles.box}>
+                                        {post.title ? <h3>{post.title}</h3> : <></>}
+                                        {post.shortDescription ? <p>{post.shortDescription}</p> : <></>}
+                                        <div className={styles.links}>
+                                            {post.links?.map((link, linkKey) => (
+                                                <Link key={linkKey} href={link.link}>
+                                                    <>
+                                                        {link.text} {link.icon ? link.icon : <></>}
+                                                    </>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    {key !== latestBlogPosts.length - 1 ? <hr /> : <></>}
+                                </>
+                            ))}
                         </div>
                     </div>
                 </motion.div>

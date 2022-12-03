@@ -1,14 +1,14 @@
 $maxwidth: 1000px;
 $tint: 320; // purple!
 .main {
-    height: 90vh;
+    height: 100vh;
     min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    @media screen and (max-width: 600px) {
-        height: 70vh;
+    @media screen and (max-width: 700px) {
+        height: 90vh;
     }
     & .top {
         z-index: 99;
@@ -17,7 +17,7 @@ $tint: 320; // purple!
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 50px;
+        padding: 10px 2rem;
         width: 100%;
         max-width: $maxwidth;
 
@@ -109,58 +109,66 @@ $tint: 320; // purple!
         flex-direction: column;
         justify-content: center;
 
-        max-width: 800px;
+        max-width: $maxwidth;
         width: 90%;
         padding: 0 2rem;
         margin: 0 auto;
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 700px) {
             width: 100%;
         }
 
-        & h1 {
-            font-weight: 400;
-            color: hsl($tint, 60%, 87%);
-            font-size: 1.8rem;
-        }
-        & .classes {
-            flex-direction: column;
-            display: flex;
-            gap: 12px;
+        & .maincontainer {
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: center;
+            gap: 50px;
+
+            @media screen and (max-width: 700px) {
+                grid-template-columns: auto;
+            }
+            & h1 {
+                font-weight: 400;
+                color: hsl($tint, 60%, 87%);
+                font-size: 1.8rem;
+                margin-top: 0;
+                margin-bottom: 30px;
+            }
             & h4 {
                 font-weight: 500;
                 color: hsl(0, 0%, 50%);
             }
+
             & p {
                 color: hsl(0, 0%, 90%);
                 & a {
                     color: hsl($tint, 50%, 70%);
                 }
             }
-        }
-    }
-    & .bottom {
-        padding: 10px;
-        width: 100%;
-        max-width: $maxwidth;
-        margin: 0 auto;
-        & .footer {
-            padding: 0 20px;
-            display: flex;
-            gap: 20px;
-
-            justify-content: center;
-            align-items: center;
-            left: 0;
-            & a {
-                padding: 10px;
+            & .news {
+                max-width: 350px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                & .box {
+                    & h3 {
+                        font-weight: 500;
+                        margin: 0 0 12px 0;
+                    }
+                    & p {
+                        margin: 0 0 20px 0;
+                    }
+                    & .links {
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        gap: 10px;
+                    }
+                }
+                & hr {
+                    color: hsl(0, 0%, 10%);
+                    width: 90%;
+                }
             }
-        }
-    }
-    & a {
-        color: hsl(0, 0%, 90%);
-        &:hover {
-            color: hsl(0, 0%, 60%);
         }
     }
 }
