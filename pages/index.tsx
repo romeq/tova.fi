@@ -170,7 +170,7 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                                 it&apos;s common for most of them to be related to technical or theorethical
                                 things. I mostly like maths, programming, chemistry and psychology. If you
                                 think we share certain interests or want to talk regardless, feel free to
-                                contact me! <Link href="/about">You can read more about me here.</Link>
+                                contact me!
                             </p>
                         </div>
                         <div className={styles.news}>
