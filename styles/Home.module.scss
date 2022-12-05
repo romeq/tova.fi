@@ -6,6 +6,7 @@ $tint: 320; // purple!
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 
     @media screen and (max-width: 700px) {
         height: 90vh;
@@ -14,8 +15,8 @@ $tint: 320; // purple!
         z-index: 99;
         background-color: hsl(0, 0%, 0%);
 
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: auto auto;
         align-items: center;
         padding: 10px 2rem;
         width: 100%;
@@ -77,6 +78,7 @@ $tint: 320; // purple!
         & .links {
             display: flex;
             gap: 20px;
+            justify-content: right;
             & a {
                 padding: 10px;
             }

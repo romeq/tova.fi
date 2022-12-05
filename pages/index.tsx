@@ -5,17 +5,11 @@ import { motion, MotionConfig } from "framer"
 import { loadScrobble, Scrobble } from "../lib/lastfm-scrobble"
 import Image from "next/image"
 import { ReactElement, useMemo, useRef, useState } from "react"
-import {
-    ArrowRight,
-    ArrowRightCircle,
-    ArrowRightShort,
-    CaretDownFill,
-    Github,
-    Icon,
-} from "react-bootstrap-icons"
+import { CaretDownFill } from "react-bootstrap-icons"
 
-export async function getStaticProps() {
-    return { props: { lastScrobble: await loadScrobble() } }
+export async function getServerSideProps() {
+    const latestScrobble = await loadScrobble()
+    return { props: { lastScrobble: latestScrobble } }
 }
 
 interface LatestPosts {
@@ -48,18 +42,9 @@ const latestBlogPosts: LatestPosts[] = [
             },
         ],
     },
-    //{
-    //    links: [
-    //        {
-    //            text: "Read more from my blog",
-    //            link: "/blog",
-    //            icon: <ArrowRight />,
-    //        },
-    //    ],
-    //},
 ]
 
-export default function Home(props: { lastScrobble: Scrobble }) {
+export default function Home(props: { lastScrobble: Scrobble | undefined }) {
     const [imageLoaded, setImageLoaded] = useState(false)
     const [musicPopoverShown, setMusicPopoverShown] = useState(false)
     const musicPopover = useRef<HTMLDivElement>(null)
@@ -78,24 +63,29 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                 <div className={styles.top}>
                     <motion.div
                         animate={{
-                            transform: imageLoaded ? "translateY(0px)" : "translateY(-20px)",
-                            opacity: imageLoaded ? 1 : 0,
+                            transform:
+                                imageLoaded && props.lastScrobble ? "translateY(0px)" : "translateY(-20px)",
+                            opacity: imageLoaded && props.lastScrobble ? 1 : 0,
                         }}
                         initial={false}
                         className={styles.recentlyListened}
                     >
-                        <Link target="_blank" href={props.lastScrobble.link}>
+                        <Link target="_blank" href={props.lastScrobble?.link || ""}>
                             <Image
                                 onLoadingComplete={() => setImageLoaded(true)}
                                 alt="album icon"
-                                src={props.lastScrobble.image}
+                                src={props.lastScrobble?.image || ""}
                                 width={30}
                                 height={30}
                             />
                         </Link>
                         <div className={styles.meta}>
                             <div onClick={clickHandler} className={styles.note}>
-                                <span>Recently listened</span>
+                                <span>
+                                    {props.lastScrobble?.currentlyPlaying
+                                        ? "Currently playing"
+                                        : "Recently listened"}
+                                </span>
                                 <div className={styles.questionmark}>
                                     <CaretDownFill />
                                 </div>
@@ -104,8 +94,8 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                                 animate={{
                                     opacity: musicPopoverShown ? 1 : 0,
                                     transform: musicPopoverShown
-                                        ? "translateY(0px) scaleY(1)"
-                                        : "translateY(-75px) scaleY(0)",
+                                        ? "translateY(0px) scale(1)"
+                                        : "translateY(-95px) scale(0)",
                                 }}
                                 ref={musicPopover}
                                 initial={false}
@@ -120,17 +110,17 @@ export default function Home(props: { lastScrobble: Scrobble }) {
                                 </Link>
                                 !
                                 <ul>
-                                    <li>Date: {props.lastScrobble.date}</li>
-                                    <li>Album: {props.lastScrobble.album}</li>
+                                    <li>Date: {props.lastScrobble?.date}</li>
+                                    <li>Album: {props.lastScrobble?.album}</li>
                                     <li>
-                                        <Link target="_blank" href={props.lastScrobble.link}>
+                                        <Link target="_blank" href={props.lastScrobble?.link || ""}>
                                             Show track
                                         </Link>
                                     </li>
                                 </ul>
                             </motion.div>
                             <p>
-                                {props.lastScrobble.name} By {props.lastScrobble.artist}
+                                {props.lastScrobble?.name} By {props.lastScrobble?.artist}
                             </p>
                         </div>
                     </motion.div>
