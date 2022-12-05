@@ -110,7 +110,11 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                                 </Link>
                                 !
                                 <ul>
-                                    <li>Date: {props.lastScrobble?.date}</li>
+                                    {props.lastScrobble?.date ? (
+                                        <li>Date: {props.lastScrobble?.date}</li>
+                                    ) : (
+                                        <></>
+                                    )}
                                     <li>Album: {props.lastScrobble?.album}</li>
                                     <li>
                                         <Link target="_blank" href={props.lastScrobble?.link || ""}>
