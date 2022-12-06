@@ -18,7 +18,7 @@ $tint: 320; // purple!
         display: grid;
         grid-template-columns: auto auto;
         align-items: center;
-        padding: 10px 2rem;
+        padding: 1rem 2rem;
         width: 100%;
         max-width: $maxwidth;
 
@@ -90,19 +90,18 @@ $tint: 320; // purple!
                 width: 100%;
             }
             & .links {
-                align-items: end;
+                justify-content: flex-start;
                 gap: 2px;
             }
 
             & .recentlyListened .meta .musicpopover {
                 max-width: none;
             }
-            padding: 1rem 2rem;
             gap: 20px;
 
             justify-content: space-between;
             align-items: flex-start;
-            flex-direction: column;
+            grid-template-columns: auto;
         }
     }
     & .center {
@@ -112,7 +111,7 @@ $tint: 320; // purple!
         justify-content: center;
 
         max-width: $maxwidth;
-        width: 90%;
+        width: 100%;
         padding: 0 2rem;
         margin: 0 auto;
 
