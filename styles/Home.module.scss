@@ -1,15 +1,14 @@
 $maxwidth: 1000px;
-$tint: 320; // purple!
+$tint: 130; // green!
 .main {
     height: 100vh;
     min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
 
     @media screen and (max-width: 700px) {
-        height: 90vh;
+        height: 100vh;
     }
     & .top {
         z-index: 99;
@@ -18,7 +17,7 @@ $tint: 320; // purple!
         display: grid;
         grid-template-columns: auto auto;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 1.5rem 2rem;
         width: 100%;
         max-width: $maxwidth;
 
@@ -85,8 +84,10 @@ $tint: 320; // purple!
         }
 
         @media screen and (max-width: 700px) {
+            width: 100%;
             & .links,
-            .recentlyListened {
+            .recentlyListened,
+            .meta {
                 width: 100%;
             }
             & .links {
@@ -95,12 +96,9 @@ $tint: 320; // purple!
             }
 
             & .recentlyListened .meta .musicpopover {
-                max-width: none;
+                max-width: 350px;
             }
             gap: 20px;
-
-            justify-content: space-between;
-            align-items: flex-start;
             grid-template-columns: auto;
         }
     }
@@ -109,10 +107,11 @@ $tint: 320; // purple!
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
 
         max-width: $maxwidth;
         width: 100%;
-        padding: 0 2rem;
+        padding: 2rem;
         margin: 0 auto;
 
         @media screen and (max-width: 700px) {

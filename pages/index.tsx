@@ -55,9 +55,9 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
     }
 
     return (
-        <MotionConfig transition={{ duration: 0.4, bounce: 0.4, type: "spring" }}>
+        <MotionConfig transition={{ duration: 0.3, bounce: 0.25, type: "spring" }}>
             <Head>
-                <title>tova.fi</title>
+                <title>Touko Valkonen</title>
             </Head>
             <div className={styles.main}>
                 <div className={styles.top}>
@@ -94,8 +94,8 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                                 animate={{
                                     opacity: musicPopoverShown ? 1 : 0,
                                     transform: musicPopoverShown
-                                        ? "translateY(0px) scale(1)"
-                                        : "translateY(-95px) scale(0)",
+                                        ? "translateY(0px) scaleX(1)"
+                                        : "translateY(-35px) scaleX(0)",
                                 }}
                                 ref={musicPopover}
                                 initial={false}
