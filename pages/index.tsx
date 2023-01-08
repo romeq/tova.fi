@@ -162,7 +162,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                             <p>
                                 I&apos;m Touko, also widely known by the nickname toke. My interests vary, but
                                 it&apos;s common for most of them to be related to technical or theorethical
-                                things. I mostly like maths, programming, chemistry and psychology. If you
+                                things. I mostly like maths, programming and chemistry. If you
                                 think we share certain interests or want to talk regardless, feel free to
                                 contact me!
                             </p>
