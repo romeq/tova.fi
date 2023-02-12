@@ -26,7 +26,7 @@ const latestBlogPosts: LatestPosts[] = [
     {
         title: "Usva is now in production!",
         shortDescription:
-            "I'm glad to announce that my most recent project Usva was released to production last week.",
+            "I'm glad to announce that my most recent project Usva was released to production recently.",
         links: [
             {
                 text: "Website",
