@@ -24,13 +24,16 @@ export default async function getBlogContent(title: string) {
 }
 
 export function getAllPosts() {
-    const fileNames = fs.readdirSync(postsDirectory)
-
-    return fileNames.map((fileName) => {
-        return {
-            params: {
-                title: fileName.replace(/\.md$/, ""),
-            },
-        }
-    })
+    try {
+        const fileNames = fs.readdirSync(postsDirectory)
+        return fileNames.map((fileName) => {
+            return {
+                params: {
+                    title: fileName.replace(/\.md$/, ""),
+                },
+            }
+        })
+    } catch (e) {
+        return null
+    }
 }
