@@ -160,7 +160,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                     >
                         <Link href="/blog">Blog</Link>
                         <Link href="https://github.com/romeq" target="_blank">
-                            GitHub-profile
+                            GitHub profile
                         </Link>
                     </motion.div>
                 </div>
