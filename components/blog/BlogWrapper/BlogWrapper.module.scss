@@ -1,0 +1,15 @@
+$tint: 300;
+.main div {
+    width: min(90%, 800px);
+    margin: 90px auto;
+    color: hsl($tint, 10%, 70%);
+
+    & h1 {
+        color: hsl($tint, 30%, 80%);
+        margin-bottom: 30px;
+    }
+    & p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+}

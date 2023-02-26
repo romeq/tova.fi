@@ -55,9 +55,29 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
     }
 
     return (
-        <MotionConfig transition={{ duration: 0.3, bounce: 0.25, type: "spring" }}>
+        <MotionConfig reducedMotion="user" transition={{ duration: 0.5, bounce: 0.55, type: "spring" }}>
             <Head>
-                <title>Touko Valkonen</title>
+                <title>Touko Valkonen - Personal website</title>
+                <meta name="title" content="Touko Valkonen - Personal website" />
+                <meta
+                    name="description"
+                    content='This website works as my "portfolio" for recruitment process as well as a public blog where I share my frustration. You might find something interesting, too.'
+                />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://tova.fi/" />
+                <meta property="og:title" content="Touko Valkonen - Personal website" />
+                <meta
+                    property="og:description"
+                    content='This website works as my "portfolio" for recruitment process as well as a public blog where I share my frustration. You might find something interesting, too.'
+                />
+
+                <meta property="twitter:url" content="https://tova.fi/" />
+                <meta property="twitter:title" content="Touko Valkonen - Personal website" />
+                <meta
+                    property="twitter:description"
+                    content='This website works as my "portfolio" for recruitment process as well as a public blog where I share my frustration. You might find something interesting, too.'
+                />
             </Head>
             <div className={styles.main}>
                 <div className={styles.top}>
@@ -67,7 +87,6 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                                 imageLoaded && props.lastScrobble ? "translateY(0px)" : "translateY(-20px)",
                             opacity: imageLoaded && props.lastScrobble ? 1 : 0,
                         }}
-                        initial={false}
                         className={styles.recentlyListened}
                     >
                         <Link target="_blank" href={props.lastScrobble?.link || ""}>
@@ -139,6 +158,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                         }}
                         className={styles.links}
                     >
+                        <Link href="/blog">Blog</Link>
                         <Link href="https://github.com/romeq" target="_blank">
                             GitHub-profile
                         </Link>
@@ -160,32 +180,40 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                             <h1>Hi, I&apos;m Touko. </h1>
                             <h4>A brief overview about me</h4>
                             <p>
-                                I&apos;m Touko, also widely known by the nickname toke. My interests vary, but
-                                it&apos;s common for most of them to be related to technical or theorethical
-                                things. I mostly like maths, programming and chemistry. If you
-                                think we share certain interests or want to talk regardless, feel free to
-                                contact me!
+                                I&apos;m Touko, also widely known by the nickname toke. Now that you&apos;ve
+                                got to my website, let me introduce myself! I&apos;m a programming enthusiast
+                                with large interest to digging through data and making systems safer. <br />
+                                <br />
+                                My points of interest vary from time to time, but it&apos;s common for most of
+                                them to be related to technical things. I mostly like maths, physics,
+                                chemistry and that kind of stuff. I listen to all kinds of music, ranging from
+                                the hardest and toughest metal you can imagine to the softest pop you can
+                                find. <br /> <br />
+                                If you think we share certain interests or want to talk regardless, feel free
+                                to contact me (preferrably at touko@testausserveri.fi)!
                             </p>
                         </div>
-                        <div className={styles.news}>
-                            {latestBlogPosts.map((post, key) => (
-                                <>
-                                    <div key={key} className={styles.box}>
-                                        {post.title ? <h3>{post.title}</h3> : <></>}
-                                        {post.shortDescription ? <p>{post.shortDescription}</p> : <></>}
-                                        <div className={styles.links}>
-                                            {post.links?.map((link, linkKey) => (
-                                                <Link key={linkKey} href={link.link}>
-                                                    <>
-                                                        {link.text} {link.icon ? link.icon : <></>}
-                                                    </>
-                                                </Link>
-                                            ))}
+                        <div>
+                            <div className={styles.news}>
+                                {latestBlogPosts.map((post, key) => (
+                                    <>
+                                        <div key={key} className={styles.box}>
+                                            {post.title ? <h3>{post.title}</h3> : <></>}
+                                            {post.shortDescription ? <p>{post.shortDescription}</p> : <></>}
+                                            <div className={styles.links}>
+                                                {post.links?.map((link, linkKey) => (
+                                                    <Link key={linkKey} href={link.link}>
+                                                        <>
+                                                            {link.text} {link.icon ? link.icon : <></>}
+                                                        </>
+                                                    </Link>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                    {key !== latestBlogPosts.length - 1 ? <hr /> : <></>}
-                                </>
-                            ))}
+                                        {key !== latestBlogPosts.length - 1 ? <hr /> : <></>}
+                                    </>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </motion.div>

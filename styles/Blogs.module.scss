@@ -1,0 +1,27 @@
+$tint: 300;
+.main {
+    width: min(90%, 800px);
+    margin: 90px auto;
+    color: hsl($tint, 0%, 70%);
+
+    & h1 {
+        color: hsl($tint, 50%, 80%);
+        margin-bottom: 30px;
+    }
+    & p,
+    a {
+        margin: 5px;
+        font-size: 1.1rem;
+    }
+
+    & a {
+        text-decoration: underline;
+    }
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 30px 0;
+    }
+}

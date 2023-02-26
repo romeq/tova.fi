@@ -36,10 +36,15 @@ a {
 
 body {
     color: 0, hsl(0, 0%, 100%);
-    background: hsl(220, 0%, 0%);
+    background: hsl(300, 0%, 2%);
 }
 
 @font-face {
     font-family: CircularStdBook;
     src: url(/CircularStdBook.ttf);
+}
+
+@font-face {
+    font-family: JetBrains Mono;
+    src: url(/JetBrainsMono-Regular.ttf);
 }
