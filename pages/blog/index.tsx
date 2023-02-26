@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/blog-content"
 import styles from "../../styles/Blogs.module.scss"
 
 export function getStaticProps() {
-    const posts = getAllPosts()?.map((f) => f.params.title)
+    const posts = getAllPosts().map((f) => f.params.title)
     return {
         props: {
             posts,

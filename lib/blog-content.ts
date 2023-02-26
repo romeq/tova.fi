@@ -34,6 +34,6 @@ export function getAllPosts() {
             }
         })
     } catch (e) {
-        return null
+        return []
     }
 }

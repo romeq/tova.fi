@@ -5,7 +5,7 @@ import BlogWrapper from "../../components/blog/BlogWrapper/BlogWrapper"
 
 export async function getStaticPaths() {
     let paths = getAllPosts()
-    paths?.push({
+    paths.push({
         params: {
             title: "latest",
         },
@@ -21,7 +21,7 @@ export async function getStaticProps({ params }: { params: { title: string } }) 
     let title = params.title
     if (title === "latest") {
         const posts = getAllPosts()
-        if (posts && posts.length > 0) {
+        if (posts.length > 0) {
             title = posts[posts.length - 1].params.title
         }
     }
