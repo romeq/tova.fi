@@ -2,14 +2,41 @@ $tint: 300;
 .main div {
     width: min(90%, 800px);
     margin: 90px auto;
-    color: hsl($tint, 10%, 70%);
+    color: hsl($tint, 0%, 70%);
 
-    & h1 {
-        color: hsl($tint, 30%, 80%);
+    & h1,
+    h2 {
+        color: hsl($tint, 0%, 80%);
         margin-bottom: 30px;
+    }
+    & h2 {
+        margin-top: 50px;
+    }
+    & h3 {
+        margin-top: 30px;
     }
     & p {
         margin-bottom: 20px;
         font-size: 1.1rem;
+        & code {
+            font-size: 0.9rem;
+            background: hsl(0deg, 0%, 10%);
+            font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", "monospace";
+            padding: 1px 5px;
+            border-radius: 5px;
+            color: hsl(300deg, 0%, 70%);
+        }
+    }
+    & a {
+        color: hsl($tint, 30%, 60%);
+        text-decoration: underline;
+    }
+    & a:hover {
+        color: hsl($tint, 30%, 30%);
+    }
+    & pre {
+        border-radius: 5px;
+        background: hsl(0deg, 0%, 10%);
+        overflow-x: auto;
     }
 }
