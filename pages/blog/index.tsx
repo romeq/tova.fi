@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blog-content"
 import styles from "../../styles/Blogs.module.scss"
+import { motion } from "framer"
 
 export function getStaticProps() {
     const posts = getAllPosts().map((f) => f.params.title)
@@ -37,9 +38,9 @@ function NoPosts() {
 
 export default function BlogListing({ posts }: { posts: any[] }) {
     return (
-        <div className={styles.main}>
+        <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} className={styles.main}>
             <h1>My posts</h1>
             {posts.length > 0 ? <Posts posts={posts} /> : <NoPosts />}
-        </div>
+        </motion.div>
     )
 }

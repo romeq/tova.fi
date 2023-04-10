@@ -6,6 +6,7 @@ import { loadScrobble, Scrobble } from "../lib/lastfm-scrobble"
 import Image from "next/image"
 import { ReactElement, useMemo, useRef, useState } from "react"
 import { CaretDownFill } from "react-bootstrap-icons"
+import { ShieldLock } from "react-bootstrap-icons"
 
 export async function getServerSideProps() {
     const latestScrobble = await loadScrobble()
@@ -24,21 +25,13 @@ interface LatestPosts {
 
 const latestBlogPosts: LatestPosts[] = [
     {
-        title: "Usva is now in production!",
+        title: "Setting up your own VPN server",
         shortDescription:
-            "I'm glad to announce that my most recent project Usva was released to production recently.",
+            "Ever thought of setting up your own VPN server? This tutorial sets the threshold for actually doing it low.",
         links: [
             {
-                text: "Website",
-                link: "https://usva.cc",
-            },
-            {
-                text: "Backend-repository",
-                link: "https://github.com/romeq/usva",
-            },
-            {
-                text: "Frontend-repository",
-                link: "https://github.com/romeq/usva-ui",
+                link: "/blog/personal-vpn-setup",
+                text: "Read blog",
             },
         ],
     },
@@ -55,7 +48,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
     }
 
     return (
-        <MotionConfig reducedMotion="user" transition={{ duration: 0.5, bounce: 0.55, type: "spring" }}>
+        <MotionConfig reducedMotion="user" transition={{ duration: 0.5, bounce: 0, type: "spring" }}>
             <Head>
                 <title>Touko Valkonen - Personal website</title>
                 <meta name="title" content="Touko Valkonen - Personal website" />
@@ -166,7 +159,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                 </div>
                 <motion.div
                     initial={{
-                        transform: "scale(0.95)",
+                        transform: "scale(0.9)",
                         opacity: 0,
                     }}
                     animate={{
