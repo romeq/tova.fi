@@ -51,15 +51,17 @@ docker-compose up -d
 
 There is a lot of options to choose from, but I ended up choosing the [Dockerized version of OpenVPN Server](https://github.com/kylemanna/docker-openvpn). I personally like to host everything in docker containers and that was such a great option for my personal needs. It even had a quick setup tutorial!
 
+Also, one great option is to use [wg-easy](https://github.com/WeeJeWel/wg-easy). However, I personally like OpenVPN better, so that the connection to the server on client's side is as easy as possible. (Might be a personal skill-issue, but I'm not a fan of the complexity of connecting to Wireguard VPN on Linux without some third-party tools.)  
+
 ## <a id="installing">Installing and configuring the server</a>
 
-There is multiple ways of installing and configuring the server. I chose to write a docker-compose file and configure the server using an `.env` file.
+There is multiple ways of applying the given quick tutorial to personal needs. I chose to write a docker-compose file and configure the server using an `.env` file.
 
 According to the README in [GitHub](https://github.com/kylemanna/docker-openvpn) we shall choose a name for the volume in which the vpn data (certificates, etcetera) is saved. It is suggested that the name is saved in an environment variable named `OVPN_DATA`.
 
 For the setup, your `.env` file has to have a variable named`OVPN_DATA`. Nothing else is needed, and you can simply run `echo OVPN_DATA=ovpn_server_data > .env`.
 
-After choosing a name for our volume it's time for the server initialization. The following commands are mostly copied from the GitHub README with added `export` command.
+After choosing the name for our volume it's time for the server initialization. The following commands are mostly copied from the GitHub README with added `export` command.
 
 ```sh
 export $(cat .env)
@@ -115,7 +117,7 @@ cat "$CLIENT_ID".ovpn && rm "$CLIENT_ID".ovpn
 
 ### Connecting with a password
 
-Rely on [this Medium article](https://medium.com/@vantintttp/how-to-setup-openvpn-authentication-by-username-and-password-589a97cafd8b)
+Refer to [this Medium article](https://medium.com/@vantintttp/how-to-setup-openvpn-authentication-by-username-and-password-589a97cafd8b).
 
 
 
