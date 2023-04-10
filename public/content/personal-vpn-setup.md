@@ -121,4 +121,6 @@ Rely on [this Medium article](https://medium.com/@vantintttp/how-to-setup-openvp
 
 ## <a id="conclusion">Conclusion</a>
 
-At the end it's not that difficult to set up a VPN server for yourself. It also most often secures your data well and can be  
+At the end it's not that difficult to set up a VPN server for yourself. It's also most often the most secure option as far as your server is not broken into.
+
+In the end the most secure VPN server is the one you have full control over.
