@@ -21,7 +21,7 @@ export default function NotFound() {
 
                 <div className={styles.buttons}>
                     <Link href="/">Navigate to root</Link>
-                    <Link href="/blog/latest">Read my latest blog post</Link>
+                    <Link href="https://blog.tova.fi/posts">Read my latest blog post</Link>
                 </div>
             </motion.div>
         </MotionConfig>

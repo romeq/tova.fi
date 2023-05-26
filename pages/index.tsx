@@ -23,6 +23,7 @@ interface LatestPosts {
     }[]
 }
 
+// TODO: parse from https://blog.tova.fi
 const latestBlogPosts: LatestPosts[] = [
     {
         title: "Setting up your own VPN server",
@@ -30,7 +31,7 @@ const latestBlogPosts: LatestPosts[] = [
             "Ever thought of setting up your own VPN server? This tutorial sets the threshold for actually doing it low.",
         links: [
             {
-                link: "/blog/personal-vpn-setup",
+                link: "https://blog.tova.fi/posts/personal-vpn-setup/",
                 text: "Read blog",
             },
         ],
@@ -151,7 +152,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                         }}
                         className={styles.links}
                     >
-                        <Link href="/blog">Blog</Link>
+                        <Link href="https://blog.tova.fi">Blog</Link>
                         <Link href="https://github.com/romeq" target="_blank">
                             GitHub profile
                         </Link>
