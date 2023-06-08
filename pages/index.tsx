@@ -6,7 +6,6 @@ import { loadScrobble, Scrobble } from "../lib/lastfm-scrobble"
 import Image from "next/image"
 import { ReactElement, useMemo, useRef, useState } from "react"
 import { CaretDownFill } from "react-bootstrap-icons"
-import { ShieldLock } from "react-bootstrap-icons"
 
 export async function getServerSideProps() {
     const latestScrobble = await loadScrobble()
@@ -77,8 +76,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                 <div className={styles.top}>
                     <motion.div
                         animate={{
-                            transform:
-                                imageLoaded && props.lastScrobble ? "translateY(0px)" : "translateY(-20px)",
+                            transform: imageLoaded && props.lastScrobble ? "translateY(0px)" : "translateY(-20px)",
                             opacity: imageLoaded && props.lastScrobble ? 1 : 0,
                         }}
                         className={styles.recentlyListened}
@@ -95,9 +93,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                         <div className={styles.meta}>
                             <div onClick={clickHandler} className={styles.note}>
                                 <span>
-                                    {props.lastScrobble?.currentlyPlaying
-                                        ? "Currently playing"
-                                        : "Recently listened"}
+                                    {props.lastScrobble?.currentlyPlaying ? "Currently playing" : "Recently listened"}
                                 </span>
                                 <div className={styles.questionmark}>
                                     <CaretDownFill />
@@ -123,11 +119,7 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                                 </Link>
                                 !
                                 <ul>
-                                    {props.lastScrobble?.date ? (
-                                        <li>Date: {props.lastScrobble?.date}</li>
-                                    ) : (
-                                        <></>
-                                    )}
+                                    {props.lastScrobble?.date ? <li>Date: {props.lastScrobble?.date}</li> : <></>}
                                     <li>Album: {props.lastScrobble?.album}</li>
                                     <li>
                                         <Link target="_blank" href={props.lastScrobble?.link || ""}>
@@ -174,17 +166,16 @@ export default function Home(props: { lastScrobble: Scrobble | undefined }) {
                             <h1>Hi, I&apos;m Touko. </h1>
                             <h4>A brief overview about me</h4>
                             <p>
-                                I&apos;m Touko, also widely known by the nickname toke. Now that you&apos;ve
-                                got to my website, let me introduce myself! I&apos;m a programming enthusiast
-                                with large interest to digging through data and making systems safer. <br />
+                                I&apos;m Touko, also widely known by the nickname toke. Now that you&apos;ve got to my
+                                website, let me introduce myself! I&apos;m a programming enthusiast with large interest
+                                to digging through data and making systems safer. <br />
                                 <br />
-                                My points of interest vary from time to time, but it&apos;s common for most of
-                                them to be related to technical things. I mostly like maths, physics,
-                                chemistry and that kind of stuff. I listen to all kinds of music, ranging from
-                                the hardest and toughest metal you can imagine to the softest pop you can
-                                find. <br /> <br />
-                                If you think we share certain interests or want to talk regardless, feel free
-                                to contact me (preferrably at touko@testausserveri.fi)!
+                                My points of interest vary from time to time, but it&apos;s common for most of them to
+                                be related to technical things. I mostly like maths, physics, chemistry and that kind of
+                                stuff. I listen to all kinds of music, ranging from the hardest and toughest metal you
+                                can imagine to the softest pop you can find. <br /> <br />
+                                If you think we share certain interests or want to talk regardless, feel free to contact
+                                me (preferrably at touko@testausserveri.fi)!
                             </p>
                         </div>
                         <div>
