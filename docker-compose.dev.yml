@@ -14,7 +14,6 @@ services:
     env_file:
       - .env
     volumes:
-      - ./tova.fi/src:/app/src
       - ./tova.fi/public:/app/public
       - ./tova.fi/lib:/app/lib
       - ./tova.fi/styles:/app/styles

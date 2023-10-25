@@ -17,7 +17,6 @@ RUN \
   fi
 
 COPY lib ./lib
-COPY src ./src
 COPY pages ./pages
 COPY styles ./styles
 COPY public ./public
