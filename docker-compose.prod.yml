@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  tova-fi:
+    container_name: tova.fi
+    build:
+      context: ./tova.fi
+      dockerfile: prod.Dockerfile
+      args:
+        LASTFM_USER: tokeeee
+        LASTFM_APIKEY: ${LASTFM_APIKEY}
+    restart: always
+    ports:
+      - 3000:3000
+
